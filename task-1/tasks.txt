@@ -100,4 +100,39 @@
 </html>
 
 --------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <article>
+    <h3>Lorem ipsum dolor sit amet.</h3>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore sed quae illum amet praesentium omnis numquam
+      optio, veritatis perferendis qui molestiae neque rem eligendi vitae libero distinctio enim veniam corrupti!</p>
+    <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et officia ipsa cum. Rem a, qui eos iste, aut obcaecati
+      quod enim, eveniet odio sit ullam accusamus doloremque esse. Minus, provident.</p>
+    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit.</h3>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis nemo ex architecto a fugiat consequatur quod,
+      delectus facilis velit est corporis eius quo debitis optio, sint dolorem dolor dolores deleniti!</p>
+  </article>
+</body>
+<script>
+  const article = document.getElementsByTagName('article');
+  const pElem = document.querySelectorAll('p');
+
+  pElem.forEach(elem => {
+    const hrElem = document.createElement('hr');
+    elem.insertAdjacentElement('afterEnd', hrElem);
+  })
+
+</script>
+
+</html>
 
