@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+  <div id="hello-div">Hello World!</div>
+  <div id="hello-div">Hello World 2!</div>
+</body>
+<script>
+  const element = document.getElementById("hello-div"); / document - это DOM
+  / создали переменную где через DOM элемент ищем элемента по id
+  console.log(element);
+</script>
+
+</html>
+
+--------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+  <div id="hello-div">Hello World!</div>
+  <div id="hello-div">Hello World 2!</div>
+</body>
+<script>
+  const element = document.getElementById("hello-div"); / document - это DOM
+  / создали переменную где через DOM элемент ищем элемента по id
+  console.log(element); / вызываем данные элемент целиком с тегом
+  let elementTextHere = element.innerText; / создали переменную где берем только текст из тега
+  console.log(elementTextHere); /выводим
+  element.innerHTML = `<strong>New</strong> text from JS`; / можем добавлять не только текст но и теги
+  console.log(element);
+</script>
+
+</html>
+
+--------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+    <div class="element">Element</div>
+    <div class="element">Element2</div>
+    <div class="element">Element</div>
+</body>
+<script>
+  const elements = document.getElementsByClassName('element'); 
+  / обращение к элементам идет через класс
+  / есть поиск одного класса - getElementByClassName / тут образуется массив если его вызвать
+  / есть поиск нескольких классов - getElementsByClassName
+  console.log(elements); / здесь массив из элементов
+  console.log(elements[1].innerText);
+</script>
+
+</html>
+
+-----------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+    <div class="element">Element</div>
+    <div class="element">Element</div>
+    <div class="element">Element</div>
+</body>
+<script>
+  const elements = document.getElementsByClassName('element');
+  console.log(elements);
+  console.log(elements[1].innerText);
+
+  for (let i = 0; i < elements.length; i++) { 
+    /обращение к каждому элементу через цикл и меняем текст - например в конце добавляем номер от 1го до 3
+    elements[i].innerText = elements[i].innerText + (i + 1);
+  }
+</script>
+
+</html>
+
+
+----------------------------------------
+Обращение к стилям элементам CSS
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+  <p id="blue">This text is blue</p>
+</body>
+<script>
+  const element = document.getElementById('blue'); / обращение через id
+  element.style.color = 'red'; меняем цвет текста элемента на красный
+  element.style.textTransform = 'uppercase'; меняем шрифт текста на заглавные буквы
+</script>
+</html>
+
+------------
+#blue {
+  color: blue;
+}
+-----------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+  <div id="container"></div>
+</body>
+<script>
+  const container = document.getElementById('container');
+  const element = document.createElement('div'); / создаем элемент - любой тег
+  element.innerHTML = `<h1><span class="myClass">Hello</span> World!</h1>`; 
+  / внутри элемента добавляем что-то - например заголовок h1 и текст
+  console.log(element);
+  container.appendChild(element); / и элемент добавляем к родителю container
+
+  const spanToBlueText = document.getElementsByClassName('myClass'); / переменная для span элемента
+  spanToBlueText[0].style.color = 'blue'; 
+  / чтобы покрасить необходимо указать индекс так как DOM просит индекс
+</script>
+
+</html>
+
+-----------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+  <div id="container"></div>
+</body>
+<script>
+  const container = document.getElementById('container');
+  let element = document.createElement('div');
+  element.innerHTML = `<h1><span class="myClass">Hello</span> World!</h1>`;
+  console.log(element);
+  container.appendChild(element); / только один принимает параметр
+  element = document.createElement('p'); 
+  / Когда меняем элемент - старый обьект не удаляется - просто обращение идет на новую ссылку
+  / от старой ссылки отделяется и соединение идет с новой ссылкой
+  / ссылка меняется - но тег остается старым
+  / ТАК ДЕЛАТЬ НЕЛЬЗЯ
+</script>
+
+</html>
+
+-------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+  <ol id="list">
+    <li>0</li>
+    
+    <li>1</li>
+    <li>2</li>
+  </ol>
+</body>
+<script>
+  const element = document.createElement('li');
+  element.innerText = 'New text';
+
+  const list = document.getElementById('list');
+  console.log(list.children);  / вывести всех детей данного элемента
+  console.log(list.children[1]); / выводит определенного ребенка элемента по индексу
+  list.insertBefore(element, list.children[1]);
+  / добавляет выбранный элемент перед указанным элементом-здесь мы создали элемент li-element
+  / и внутри list добавили перед элементом li по индексу 1
+  console.log(list.children[1]);
+</script>
+
+</html>
+
+---------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+  <style>
+    .alert {
+      padding: 15px;
+      border: 1px solid darkcyan;
+      border-radius: 4px;
+      color: darkcyan;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>This is my page</h3>
+</body>
+<script>
+  const alertEl = document.createElement('div');
+  alertEl.className = "alert alert-success"; / первый способ добавить класс к элементу
+  alertEl.className = ''; / первый способ удалить класс от элемента
+
+  alertEl.classList.add('alert alert-success'); / второй способ добавить класс к элементу
+  alertEl.classList.remove('alert alert-success'); / второй способ удалить класс от элемента
+</script>
+
+</html>
+
+----------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+  <style>
+    .alert {
+      padding: 15px;
+      border: 1px solid darkcyan;
+      border-radius: 4px;
+      color: darkcyan;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>This is my page</h3>
+</body>
+<script>
+  const alertEl = document.createElement('div');
+  alertEl.className = "alert alert-success";
+  alertEl.innerHTML = `<p><strong>Hey!</strong>, this is new Element!</p>`;
+  console.log(document.body.firstChild);  
+
+  document.body.insertBefore(alertEl, document.body.children[0]); / добавляем элемент перед h3 элементом
+</script>
+
+</html>
+
+---------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+  <div id="container">
+
+  </div>
+</body>
+<script>
+  const container = document.getElementById('container');
+  let element = document.createElement('div');
+  element.innerText = 'My text';
+
+  container.appendChild(element);
+  element.remove(); / удаление элемента с разметки но в DOM дерево сохраняется
+</script>
+
+</html>
+
+----------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+  <div id="todo">
+    <h4>Сделать</h4>
+  </div>
+  <div id="completed">
+    <h4>Выполнено</h4>
+  </div>
+</body>
+<script>
+  / Здесь мы переместили element из блока todo в блок completed
+  const element = document.createElement('div');
+  element.innerText = 'Buy milk';
+
+  const todo = document.getElementById('todo');
+  todo.appendChild(element);
+
+  /переменная element только один - поэтому их не может добавиться в двух блоках одновременно
+
+  const completed = document.getElementById('completed');
+  completed.appendChild(element);
+</script>
+
+</html>
+
+----------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+  <ul id="todo">
+    <li>Buy bread</li>
+    <li>Wash dishes</li>
+    <li>Do laundry</li>
+    <li>Work hard</li>
+  </ul>
+</body>
+<script>
+  let newElement = document.createElement('li');
+  newElement.innerText = 'I AM NEW LI';
+  const todoList = document.getElementById('todo');
+  todoList.replaceChild(newElement, todoList.children[3]); 
+  / заменяем новым элементом - newElement на последний элемент - <li>Work hard</li>
+</script>
+
+</html>
+
+-------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+  <div id="element">
+    <div class="subelement item">Subelement 1</div>
+    <div class="subelement item">Subelement 2</div>
+    <div class="subelement item">Subelement 3</div>
+  </div>
+
+  <div id="another-element">
+    <div class="subelement item">Another subelement</div>
+  </div>
+</body>
+
+<script>
+  const elements = document.querySelector('#element'); 
+  / находим элемент через querySelector 
+  / указываем # - если это id
+  console.log(elements);
+
+  / находим элемент через querySelector 
+  / указываем . - если это класс
+  const elementsWithTheSameClasses = document.querySelector('.subelement'); 
+  / когда один класс выбираем а их несколько одинановых то -выберится последний
+  const elementsWithTheSameClasses = document.querySelectorAll('.subelement');
+  / когда выбираем все классы с таким же названием
+  console.log(elementsWithTheSameClasses);
+</script>
+
+</html>
+
+--------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+
+<body>
+  <div id="element">
+    <div class="subelement item">Subelement 1</div>
+    <div class="subelement item">Subelement 2</div>
+    <div class="subelement item">Subelement 3</div>
+  </div>
+
+  <div id="another-element">
+    <div class="subelement item">Another subelement</div>
+  </div>
+</body>
+
+<script>
+  const elements = document.querySelector('#element');
+  console.log(elements);
+
+  const elementsWithTheSameClasses = document.querySelectorAll('.subelement');
+  console.log(elementsWithTheSameClasses);
+
+  / Используем цикл forEach для массивов и подбираем каждый элемент
+  
+  elementsWithTheSameClasses.forEach(item => {
+    console.log(item.innerText);
+  });
+
+  const numbers = [5, 4 ,7];
+  numbers.forEach (num => {
+    console.log(num);
+  });
+
+  const testElements = document.querySelectorAll('#element > .subelement');
+  / берем все селекторы с классом subelement внутри блока element
+  console.log(testElements);
+</script>
+
+</html>
