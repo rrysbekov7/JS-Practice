@@ -68,3 +68,36 @@
 </script>
 
 </html>
+
+-------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <ol id="todo-list">
+
+  </ol>
+</body>
+<script>
+  const tasks = ["Buy lemonade", "Make toasts", "Repair car", "Play games", "Pet a cat"];
+  const taskList = document.getElementById('todo-list');
+
+  tasks.forEach(task => {
+    const taskElement = document.createElement('li');
+    taskElement.innerText = task;
+    taskList.appendChild(taskElement);
+  })
+
+</script>
+
+</html>
+
+--------------------------------------------------
+
