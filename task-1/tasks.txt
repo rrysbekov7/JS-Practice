@@ -168,3 +168,34 @@
 
 </html>
 
+-------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+</body>
+<script>
+  let text = prompt('What is your work?');
+  console.log(text);
+  const todoList = document.createElement('ul');
+  document.body.appendChild(todoList);
+  while (text.value !== '' || text.value !== null) {
+    text = prompt('What is your work?');
+    if (text === '' || text === null) {
+      break;
+    }
+    const todoItem = document.createElement('li');
+    todoItem.innerText = text;
+    todoList.appendChild(todoItem);
+  }
+
+</script>
+
+</html>
