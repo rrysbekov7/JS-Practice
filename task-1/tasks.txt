@@ -136,3 +136,35 @@
 
 </html>
 
+----------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div id="cart-items">
+    <div class="item">Milk 1 l.<span class="vty">x 2</span></div>
+    <div class="item">Cola 1.5 l.<span class="vty">x 1</span></div>
+    <div class="item">Bread<span class="vty">x 2</span></div>
+    <div class="item">Cheese<span class="vty">x 1</span></div>
+    <div class="item">Chocolate var<span class="vty">x 3</span></div>
+  </div>
+</body>
+<script>
+  const cartItems = document.getElementById('cart-items');
+  const newItem = document.createElement('div');
+  newItem.className = 'item';
+  newItem.innerHTML = 'Canned Fish<span class="vty">x 4</span>';
+  cartItems.children[1].remove();
+  cartItems.replaceChild(newItem, cartItems.children[3]);
+
+</script>
+
+</html>
+

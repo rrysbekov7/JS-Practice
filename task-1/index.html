@@ -9,26 +9,21 @@
 </head>
 
 <body>
-  <article>
-    <h3>Lorem ipsum dolor sit amet.</h3>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore sed quae illum amet praesentium omnis numquam
-      optio, veritatis perferendis qui molestiae neque rem eligendi vitae libero distinctio enim veniam corrupti!</p>
-    <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et officia ipsa cum. Rem a, qui eos iste, aut obcaecati
-      quod enim, eveniet odio sit ullam accusamus doloremque esse. Minus, provident.</p>
-    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit.</h3>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis nemo ex architecto a fugiat consequatur quod,
-      delectus facilis velit est corporis eius quo debitis optio, sint dolorem dolor dolores deleniti!</p>
-  </article>
+  <div id="cart-items">
+    <div class="item">Milk 1 l.<span class="vty">x 2</span></div>
+    <div class="item">Cola 1.5 l.<span class="vty">x 1</span></div>
+    <div class="item">Bread<span class="vty">x 2</span></div>
+    <div class="item">Cheese<span class="vty">x 1</span></div>
+    <div class="item">Chocolate var<span class="vty">x 3</span></div>
+  </div>
 </body>
 <script>
-  const article = document.getElementsByTagName('article');
-  const pElem = document.querySelectorAll('p');
-
-  pElem.forEach(elem => {
-    const hrElem = document.createElement('hr');
-    elem.insertAdjacentElement('afterEnd', hrElem);
-  })
+  const cartItems = document.getElementById('cart-items');
+  const newItem = document.createElement('div');
+  newItem.className = 'item';
+  newItem.innerHTML = 'Canned Fish<span class="vty">x 4</span>';
+  cartItems.children[1].remove();
+  cartItems.replaceChild(newItem, cartItems.children[3]);
 
 </script>
 
