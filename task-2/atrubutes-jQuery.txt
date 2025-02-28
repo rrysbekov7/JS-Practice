@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="./hello.js">
+
+</script>
+
+</html>
+
+-------------
+alert('Hello world!'); / hello.js - создали файл
+
+------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="orders"></div>
+</body>
+<script>
+  const items = [{
+      name: 'Плов',
+      count: 2
+    },
+    {
+      name: 'Фри',
+      count: 4
+    },
+    {
+      name: 'Кола',
+      count: 2
+    }
+  ]
+
+  const orderEl = document.getElementById('orders');
+
+  for (let i = 0; i < items.length; i++) {
+    const element = document.createElement('div');
+    element.style.backgroundColor = 'blue';
+    const item = items[i];
+    element.innerText = `${item.name} -x ${item.count}`;
+    orderEl.appendChild(element);
+  }
+
+</script>
+
+</html>
+
+--------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="orders"></div>
+</body>
+<script>
+  const items = [{
+      name: 'Плов',
+      count: 2
+    },
+    {
+      name: 'Фри',
+      count: 4
+    },
+    {
+      name: 'Кола',
+      count: 2
+    }
+  ]
+
+  const orderEl = document.getElementById('orders');
+
+  const createOrderDiv = (nameItem, countItem) => {
+    const element = document.createElement('div');
+    element.style.backgroundColor = 'blue';
+    element.innerText = `${nameItem} -x ${countItem}`;
+    return element;
+  }
+
+  for (let i = 0; i < items.length; i++) {
+    orderEl.appendChild(createOrderDiv(items[i].name, items[i].count));
+  }
+
+</script>
+
+</html>
+
+-------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <div id="orders"></div>
+</body>
+<script>
+  const items = [{
+      name: 'Плов',
+      count: 2
+    },
+    {
+      name: 'Фри',
+      count: 4
+    },
+    {
+      name: 'Кола',
+      count: 2
+    }
+  ]
+
+  const orderEl = document.getElementById('orders');
+
+  for (let i = 0; i < items.length; i++) {
+    orderEl.appendChild(createOrderDiv(items[i].name, items[i].count));
+  }
+
+</script>
+
+</html>
+
+---------------------
+const createOrderDiv = (nameItem, countItem) => {
+  const element = document.createElement('div');
+  element.style.backgroundColor = 'blue';
+  element.innerText = `${nameItem} -x ${countItem}`;
+  return element;
+}
+
+------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <div id="orders"></div>
+</body>
+<script>
+  const items = [{
+      name: 'Плов',
+      count: 2
+    },
+    {
+      name: 'Фри',
+      count: 4
+    },
+    {
+      name: 'Кола',
+      count: 2
+    }
+  ]
+
+  const orderEl = document.getElementById('orders');
+
+  items.forEach(product => {
+    console.log(product);
+  });
+
+</script>
+
+</html>
+
+--------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <div id="orders"></div>
+</body>
+<script>
+  const items = [{
+      name: 'Плов',
+      count: 2
+    },
+    {
+      name: 'Фри',
+      count: 4
+    },
+    {
+      name: 'Кола',
+      count: 2
+    }
+  ]
+
+  const orderEl = document.getElementById('orders');
+
+  items.forEach(product => {
+    console.log(product);
+    orderEl.appendChild(createOrderDiv(product.name, product.count));
+  });
+
+</script>
+
+</html>
+
+-------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <form action="">
+    <input type="text" id="name" class="to-validate" placeholder="Введите имя">
+    <input type="text" id="hobby" placeholder="Введите хобби">
+    <button type="submit">Отправить</button>
+  </form>
+</body>
+<script>
+  //   const inputs = document.querySelectorAll('input[type="text"]');
+  const inputs = document.querySelectorAll('input[type="text"].to-validate');
+  const inputsSecond = document.querySelectorAll('input[type="text"]#hobby');
+  console.log(inputs);
+  console.log(inputsSecond);
+
+</script>
+
+</html>
+
+---------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <form action="">
+    <input type="text" id="name" class="to-validate" placeholder="Введите имя">
+    <input type="text" id="hobby" placeholder="Введите хобби">
+    <button type="submit">Отправить</button>
+  </form>
+  <p id="paragraph">Test element</p>
+</body>
+<script>
+  //   const inputs = document.querySelectorAll('input[type="text"]');
+  const inputs = document.querySelectorAll('input[type="text"].to-validate');
+  const inputsSecond = document.querySelectorAll('input[type="text"]#hobby');
+  console.log(inputs);
+  console.log(inputsSecond);
+  const pEl = document.querySelectorAll('p[id="paragraph"]');
+  console.log(pEl);
+
+// querySelectorAll - возвращает массив
+// getElementById - возвращает html-element
+</script>
+
+</html>
+
+--------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="element">Element 1</div>
+    <div class="element">Element 2</div>
+    <div class="element">Element 3</div>
+    <div id="divider">
+      <hr />
+    </div>
+  </div>
+
+  <div class="element">Outside element</div>
+</body>
+<script>
+  const container = document.getElementById('container');
+  console.log(container);
+  console.log(container.getElementsByClassName('element'));
+  console.log(container.getElementsByTagName('hr'));
+
+</script>
+
+</html>
+
+-------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="element">Element 1</div>
+    <div class="element">Element 2</div>
+    <div class="element">Element 3</div>
+    <div id="divider">
+      <hr />
+    </div>
+  </div>
+
+  <div class="element">Outside element</div>
+</body>
+<script>
+  const container = document.getElementById('container');
+  console.log(container.querySelectorAll('#container > .element'));
+
+</script>
+
+</html>
+
+------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <ul>
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+    </ul>
+  </div>
+  </div>
+
+</body>
+<script>
+  console.log(document.body);
+  console.log(document.body.children);
+  console.log(document.body.children[0]);
+  console.log(document.body.firstElementChild.firstElementChild);
+  const ul = document.body.firstElementChild.firstElementChild;
+  console.log(ul.children[1]);
+  const li = ul.children[1];
+  console.log(li.parentElement);
+  console.log(li.nextSibling);
+  console.log(li.previousSibling);
+
+</script>
+
+</html>
+
+------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <div id="parent">
+    <!-- Comments -->
+    <span>Текстовый узел</span>
+    <p>Параграф</p>
+  </div>
+
+</body>
+<script>
+  let parent = document.getElementById("parent");
+
+  console.log(parent.firstElementChild);
+  console.log(parent.firstChild);
+
+</script>
+
+</html>
+
+------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <ul>
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+    </ul>
+  </div>
+
+</body>
+<script>
+  const ulElement = document.body.firstElementChild.firstElementChild;
+  const liElements = ulElement.children;
+  console.log(ulElement);
+
+  liElements[0] = document.createElement('p'); / Это не работает
+
+  for (const item of liElements) {
+    item.className = 'my-class';
+    console.log(item);
+  }
+
+</script>
+
+</html>
+
+--------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <ul>
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+    </ul>
+  </div>
+
+</body>
+<script>
+  const ulElement = document.body.firstElementChild.firstElementChild;
+  const liElements = ulElement.children;
+  console.log(ulElement);
+
+  liElements[0] = document.createElement('p');
+
+  for (const item of liElements) {
+    item.className = 'my-class';
+    item.classList.add('new');
+    item.classList.remove('new');
+    console.log(item);
+  }
+
+</script>
+
+</html>
+
+--------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./CreateOrderDiv.js"></script>
+</head>
+
+<body>
+  <div id="container" style="width: 100px;">
+
+  </div>
+  <a id="link" href="#">Link</a>
+</body>
+<script>
+  const container = document.getElementById('container');
+  const link = document.getElementById('link');
+  console.log(container.getAttribute('id'));
+  console.log(container.getAttribute('style'));
+  console.log(link.getAttribute('href'));
+
+  container.setAttribute('class', 'my-class custom');
+  link.setAttribute('href', 'google.com')
+
+</script>
+
+</html>
+
+---------------------------------------
+jQuery
+https://jquery.com/download/ - скачали uncompressed первый файл
+-----------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./jquery-3.7.1.js"></script> / подключили jQuery
+</head>
+
+<body>
+  <div id="sample-div">Sample</div>
+</body>
+<script>
+  const element = $('#sample-div');
+  console.log(element[0]);
+  console.log(element.html());
+
+</script>
+
+</html>
+
+---------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./jquery-3.7.1.js"></script>
+</head>
+
+<body>
+  <div class="element">Element</div>
+  <div class="element">Element</div>
+  <div class="element">Element</div>
+</body>
+<script>
+  const elements = $('.element');
+  console.log(elements);
+  console.log(elements.length);
+
+  for (let i = 0; i < elements.length; i++) {
+    console.log(elements[i]);
+    console.log(elements.html());
+  }
+
+</script>
+
+</html>
+
+-------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./jquery-3.7.1.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <p>Мой первый элемент вшитый изначально в разметку</p>
+  </div>
+</body>
+<script>
+  const container = $('#container'); / находим контейнер
+  const div = $('<div class="custom">Text</div>'); / создаем элемент
+  const div2 = $('<div class="custom">Text2</div>'); / создаем элемент
+  console.log(div);
+  container.prepend(div); / добавляет в начало контейнера
+  container.append(div2); / добавляет в конец контейнера
+
+</script>
+
+</html>
