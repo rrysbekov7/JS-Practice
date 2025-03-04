@@ -1,23 +1,30 @@
-const items = [{
-    name: 'Плов',
-    count: 2
-  },
-  {
-    name: 'Фри',
-    count: 4
-  },
-  {
-    name: 'Кола',
-    count: 2
+document.addEventListener('DOMContentLoaded', event => {
+  let chessBoard = document.createElement('div');
+  chessBoard.className = 'chess__container';
+  chessBoard.style.border = '1px solid red';
+  chessBoard.style.width = '160px';
+  chessBoard.style.height = '160px';
+  document.body.appendChild(chessBoard);
+  chessBoard.style.margin = '50px auto';
+
+  const chessWidth = 8;
+  const chessHeight = 8;
+
+  for (let i = 0; i < chessHeight; i++) {
+
+    for (let j = 0; j < chessWidth; j++) {
+      let chessBox = document.createElement('div');
+      chessBox.style.display = 'inline-block';
+      chessBox.style.width = '20px';
+      chessBox.style.height = '20px';
+      chessBox.style.outline = '1px solid black';
+      if (j % 2 == 0) {
+        chessBox.style.background = 'black';
+      } else {
+        chessBox.style.background = 'white';
+      }
+      chessBoard.append(chessBox);
+    }
   }
-]
-
-const orderEl = document.getElementById('orders');
-
-for (let i = 0; i < items.length; i++) {
-  const element = document.createElement('div');
-  element.style.backgroundColor = 'blue';
-  const item = items[i];
-  element.innerText = `${item.name} -x ${item.count}`;
-  orderEl.appendChild(element);
-}
+  event.preventDefault();
+});
