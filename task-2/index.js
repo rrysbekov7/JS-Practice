@@ -1,30 +1,36 @@
 document.addEventListener('DOMContentLoaded', event => {
   let chessBoard = document.createElement('div');
   chessBoard.className = 'chess__container';
-  chessBoard.style.border = '1px solid red';
-  chessBoard.style.width = '160px';
-  chessBoard.style.height = '160px';
   document.body.appendChild(chessBoard);
   chessBoard.style.margin = '50px auto';
+  chessBoard.style.display = 'flex';
+  chessBoard.style.flexWrap = 'wrap';
 
-  const chessWidth = 8;
-  const chessHeight = 8;
-
-  for (let i = 0; i < chessHeight; i++) {
-
-    for (let j = 0; j < chessWidth; j++) {
-      let chessBox = document.createElement('div');
-      chessBox.style.display = 'inline-block';
-      chessBox.style.width = '20px';
-      chessBox.style.height = '20px';
-      chessBox.style.outline = '1px solid black';
-      if (j % 2 == 0) {
-        chessBox.style.background = 'black';
-      } else {
+  const myChess = (width, height, color, blockWidth) => {
+    chessBoard.style.width = `${width * blockWidth}px`;
+    chessBoard.style.outline = `1px solid ${color}`;
+    for (let i = 0; i < height; i++) {
+      for (let j = 0; j < width; j++) {
+        const chessBox = document.createElement('div');
+        chessBox.style.width = `${blockWidth}px`;
+        chessBox.style.height = `${blockWidth}px`;
+        chessBox.style.outline = `1px solid ${color}`;
         chessBox.style.background = 'white';
+        chessBoard.appendChild(chessBox);
+        if (i % 2 == 0) {
+          if (j % 2 == 0) {
+            chessBox.style.background = color;
+          }
+        } else {
+          if (j % 2 != 0) {
+            chessBox.style.background = color;
+          }
+        }
       }
-      chessBoard.append(chessBox);
     }
   }
+
+  myChess(16, 16, 'green', 20);
+
   event.preventDefault();
 });
