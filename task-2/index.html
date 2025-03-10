@@ -6,23 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./style.css">
+  <script src="./jquery-3.7.1.js"></script>
 </head>
 
 <body>
 </body>
 <script>
   document.addEventListener('DOMContentLoaded', event => {
-    const todoList = document.createElement('ul');
-    document.body.appendChild(todoList);
+    const todoList = $('<ul class="todo__list"></ul>');
+    document.body.append(todoList[0]);
     while (true) {
       let text = prompt('What is your work?');
-      console.log(text);
       if (text === '' || text === null) {
         break;
       } else {
-        const todoItem = document.createElement('li');
-        todoItem.innerText = text;
-        todoList.appendChild(todoItem);
+        const todoItem = $('<li class="todo__item"></li>');
+        todoItem.html(text);
+        todoList.append(todoItem);
       }
     }
     event.preventDefault();
