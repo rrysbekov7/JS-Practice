@@ -182,20 +182,24 @@
 <body>
 </body>
 <script>
-  let text = prompt('What is your work?');
-  console.log(text);
-  const todoList = document.createElement('ul');
-  document.body.appendChild(todoList);
-  while (text.value !== '' || text.value !== null) {
-    text = prompt('What is your work?');
-    if (text === '' || text === null) {
-      break;
+  document.addEventListener('DOMContentLoaded', event => {
+    const todoList = document.createElement('ul');
+    document.body.appendChild(todoList);
+    while (true) {
+      let text = prompt('What is your work?');
+      console.log(text);
+      if (text === '' || text === null) {
+        break;
+      } else {
+        const todoItem = document.createElement('li');
+        todoItem.innerText = text;
+        todoList.appendChild(todoItem);
+      }
     }
-    const todoItem = document.createElement('li');
-    todoItem.innerText = text;
-    todoList.appendChild(todoItem);
-  }
+    event.preventDefault();
+  });
 
 </script>
 
 </html>
+
