@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/media.css">
+</head>
+<body>
+  
+</body>
+
+<script>
+  const showMessage = () => alert('Hello');
+  setTimeout(showMessage, 3000); / интервал который вызывает функцию-showMessage через 3 секунды
+  / callback функция - функция которая вызывается внутри другой функции
+  / showMessage - это callback функция
+
+  setTimeout(() => { / интервал который вызывает анонимную функцию через 2 секунды
+    alert('Hello World!');
+  }, 2000);
+</script>
+
+
+
+</html>
+
+__________________________________________
+<script>
+  let count = 0;
+  let interval = setInterval(() => { 
+    / интервал который вызывает анонимную функцию которая выводит надпись каждые 2 секунды
+    console.log('work!');
+  }, 2000);
+</script>
+
+__________________________________________
+<script>
+  let count = 0;
+  let interval = setInterval(() => {
+    / интервал который вызывает анонимную 
+    / функцию которая выводит число которая увеличивается каждый раз на 1 через 2 секунды
+    count++;    
+    console.log(count);
+  }, 2000);
+</script>
+
+__________________________________________
+<script>
+  let count = 0;
+  let interval = setInterval(() => {
+    count++;    
+    console.log(count);
+
+    if (count === 5) { / останавливает интервал когда число достигает 5
+      clearInterval(interval);
+    }
+  }, 2000);
+</script>
+
+__________________________________________
+<script>
+  let count = 0;
+  let interval = null;
+  interval = setInterval(() => {
+    count++;    
+    console.log(count);
+
+    if (count === 5) {
+      clearInterval(interval);
+      interval = null; / больше так пишут остановки интервала
+    }
+  }, 2000);
+</script>
+
+__________________________________________
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container {
+      background: red;
+      padding: 10px;
+    }
+
+    .item {
+      height: 100px;
+      width: 50%;
+      background: blue;
+      padding: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="item">
+      <input type="button" class="btn" value="Click me!" />
+    </div>
+  </div>
+  <script>
+    document.querySelector('.btn').addEventListener('click', e => {
+      console.log('Input click');
+      // e.stopPropagation()
+    });
+
+    document.querySelector('.item').addEventListener('click', event => {
+      console.log('Item click');
+      // event.stopPropagation();
+    });
+
+    document.querySelector('.container').addEventListener('click', event => {
+      console.log('Container click');
+      // event.stopPropagation();
+    });
+
+  </script>
+</body>
+
+</html>
+
+__________________________________________
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <a href="https://google.com" id="google_link">Google</a>
+
+    <hr>
+
+    <form id="form">
+        <button type="submit">Отправить</button>
+    </form>
+
+<script>
+
+    document.getElementById('google_link').addEventListener('click', event => {
+        alert('Нажала на ссылку и ниже отменила её стандартные действия');
+       event.preventDefault();
+    });
+
+    document.getElementById('form').addEventListener('submit', event => {
+        alert('Нажала на отправку и отменила перезагрузку при отправке формы');
+       event.preventDefault();
+    });
+
+</script>
+</body>
+</html>
+
+__________________________________________
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+
+<script>
+    const items = document.querySelectorAll('.item');
+
+    const showMessage = () =>  console.log('Нажала!');
+    / лучше писать функцию определенную - анонимную лучше не писать
+    items.forEach(item => {
+        item.addEventListener('click', showMessage);
+    });
+
+</script>
+</body>
+</html>
+
+__________________________________________
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .item span {
+      display: inline-block;
+      padding: 4px;
+      background: green;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <button class="item">Button <span>1</span></button>
+  <button class="item">Button <span>2</span></button>
+  <button class="item">Button <span>3</span></button>
+
+  <script>
+    const items = document.querySelectorAll('.item');
+
+    const showElements = (event) => {
+      console.log(event.target); // вернет элемент и даже может тот, который лежит внутри // если вложенность
+      console.log(event.currentTarget); // вернет элемент на которое навесили событие // пофиг на вложенность
+    };
+
+    items.forEach(item => {
+      // item.addEventListener('click', showElements);
+      item.addEventListener('click', e => showElements(e));
+    });
+
+  </script>
+</body>
+
+</html>
+
+__________________________________________
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<!--    <script src="09.js"></script>-->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('btn-click');
+
+            btn.addEventListener('click', () => {
+                alert('Нажала на кнопку!');
+            });
+        });
+    </script>
+</head>
+<body>
+
+<button type="button" id="btn-click">Click</button>
+
+
+</body>
+</html>
+
+__________________________________________
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btn-click');
+
+    btn.addEventListener('click', () => {
+        alert('Нажала на кнопку!');
+    });
+});
+
+__________________________________________
