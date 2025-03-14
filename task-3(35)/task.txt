@@ -99,3 +99,107 @@ document.addEventListener('DOMContentLoaded', event => {
 });
 
 ===================================================================
+TASK-3
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./index.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div>
+    <span id="minutes">00</span>
+    <span id="seconds">00</span>
+  </div>
+  <button id="start">Start</button>
+  <button id="pause">Pause</button>
+  <button id="reset">Reset</button>
+</body>
+
+
+</html>
+
+-----------------------
+document.addEventListener('DOMContentLoaded', event => {
+  let container = document.getElementsByTagName('div');
+  console.log(container[0].innerText);
+  container[0].style.border = '1px solid red';
+  container[0].style.borderRadius = '5px';
+  container[0].style.marginBottom = '10px';
+  const minutes = document.getElementById('minutes');
+  const seconds = document.getElementById('seconds');
+  const startBtn = document.getElementById('start');
+  const pauseBtn = document.getElementById('pause');
+  const resetBtn = document.getElementById('reset');
+  container[0].style.textAlign = 'center';
+  minutes.style.fontSize = '60px';
+  seconds.style.fontSize = '60px';
+  minutes.style.fontWeight = '700';
+  seconds.style.fontWeight = '700';
+  minutes.style.fontFamily = "Poppins";
+  seconds.style.fontFamily = "Poppins";
+
+  startBtn.addEventListener('click', () => {
+    let second = parseInt(seconds.innerText);
+    let minute = parseInt(minutes.innerText);
+    const count = () => {
+      console.log('this is num ' + second);
+      second++;
+
+
+      if (second < 10) {
+        seconds.innerText = "0" + second;
+      } else {
+        seconds.innerText = second;
+      }
+      if (second === 60) {
+        second = "00";
+        seconds.innerText = second;
+        minute++;
+        minutes.innerText = "0" + minute;
+      }
+
+      if (minute < 10) {
+        minutes.innerText = "0" + minute;
+      } else {
+        minutes.innerText = minute;
+      }
+
+      if (minute === 60) {
+        minute = "0";
+        minutes.innerText = "0" + minute;
+      }
+
+    }
+
+    const interval = setInterval(count, 100);
+    pauseBtn.addEventListener('click', () => {
+      clearInterval(interval);
+    });
+    resetBtn.addEventListener('click', () => {
+      minutes.innerText = "00";
+      seconds.innerText = "00";
+      clearInterval(interval);
+    });
+  });
+
+
+
+  console.log(container[0]);
+  console.log(parseInt(seconds.innerText));
+  event.preventDefault();
+});
+
+===========================================================================
