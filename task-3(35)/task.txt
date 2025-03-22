@@ -203,3 +203,66 @@ document.addEventListener('DOMContentLoaded', event => {
 });
 
 ===========================================================================
+document.addEventListener('DOMContentLoaded', event => {
+  let username = document.querySelector('input[name = "username"]');
+  let password = document.querySelector('input[name = "password"]');
+  let btn = document.querySelector('input[type="submit"]');
+  let form = document.querySelector("form");
+
+  username.addEventListener('keyup', () => {
+    myEventFunc();
+  });
+
+  password.addEventListener('keyup', () => {
+    myEventFunc();
+  });
+
+  const myEventFunc = () => {
+    if (username.value.length >= 6 && password.value.length >= 6) {
+      btn.disabled = false;
+    } else {
+      btn.disabled = true;
+    }
+  }
+
+  form.addEventListener('submit', e => {
+    alert(`Login: ${user} \nPassword: ${pass}`);
+    e.preventDefault();
+  })
+  event.preventDefault();
+});
+
+--------------------
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./index.js"></script>
+</head>
+
+<body>
+  <form>
+    <input type="text" name="username">
+    <input type="text" name="password">
+    <input type="submit" value="Log In" disabled>
+  </form>
+</body>
+
+
+</html>
+
+=============================================================================
+Как получить доступ к form 
+
+let form = document.querySelector("form");
+
+form.addEventListener('submit', e => {
+    alert(`Login: ${user} \nPassword: ${pass}`);
+    e.preventDefault();
+  })
+

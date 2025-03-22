@@ -1,25 +1,28 @@
 document.addEventListener('DOMContentLoaded', event => {
-  const username = document.querySelector('input[name = "username"]');
-  const password = document.querySelector('input[name = "password"]');
-  const btn = document.querySelector('input[type="submit"]');
-  let usercount;
-  let passcount;
-  username.addEventListener('keyup', e => {
-    console.log(e.currentTarget.value.length);
-    usercount = e.currentTarget.value;
+  let username = document.querySelector('input[name = "username"]');
+  let password = document.querySelector('input[name = "password"]');
+  let btn = document.querySelector('input[type="submit"]');
+  let form = document.querySelector("form");
+
+  username.addEventListener('keyup', () => {
+    myEventFunc();
   });
 
-  password.addEventListener('keyup', e => {
-    console.log(e.currentTarget.value);
-    passcount = e.currentTarget.value;
+  password.addEventListener('keyup', () => {
+    myEventFunc();
   });
 
-  console.log(usercount);
-  if (usercount.length >= 6) {
-    btn.disabled = false;
+  const myEventFunc = () => {
+    if (username.value.length >= 6 && password.value.length >= 6) {
+      btn.disabled = false;
+    } else {
+      btn.disabled = true;
+    }
   }
 
-
-
+  form.addEventListener('submit', e => {
+    alert(`Login: ${user} \nPassword: ${pass}`);
+    e.preventDefault();
+  })
   event.preventDefault();
 });
