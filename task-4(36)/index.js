@@ -1,18 +1,21 @@
 document.addEventListener('DOMContentLoaded', e => {
   let alertBtn = document.getElementById('alert__btn');
+  let confirmBtn = document.getElementById('confirm__btn');
   alertBtn.style.padding = '5px 15px';
   alertBtn.style.marginBottom = '10px';
 
-  const customAlert = () => {
+  confirmBtn.style.padding = '5px 15px';
+  confirmBtn.style.marginBottom = '10px';
+
+  const customConfirm = () => {
     let alertBox = document.createElement('div');
     let title = document.createElement('h1');
     let text = document.createElement('p');
     let btn = document.createElement('button');
-    alertBox.style.outline = '1px solid red';
     alertBox.style.width = '400px';
     alertBox.style.padding = '15px 20px';
     alertBox.style.position = 'fixed';
-    alertBox.style.background = 'white';
+    alertBox.style.background = '#ffffff';
     alertBox.style.borderRadius = '5px';
     title.innerText = 'Alert!';
     title.style.margin = 0;
@@ -29,22 +32,44 @@ document.addEventListener('DOMContentLoaded', e => {
     btn.style.position = 'absolute';
     btn.style.right = '20px';
     btn.style.bottom = '15px';
+    let cancelBtn = document.createElement('button');
+    cancelBtn.innerText = 'Cancel';
+    cancelBtn.style.background = "rgb(66, 147, 228)";
+    cancelBtn.style.color = 'white';
+    cancelBtn.style.border = 'none';
+    cancelBtn.style.borderRadius = '3px';
+    cancelBtn.style.padding = '5px 10px';
+    cancelBtn.style.fontWeight = 'bold';
+    cancelBtn.style.position = 'absolute';
+    cancelBtn.style.right = '100px';
+    cancelBtn.style.bottom = '15px';
+    alertBox.appendChild(cancelBtn);
     alertBox.appendChild(title);
     alertBox.appendChild(text);
     alertBox.appendChild(btn);
 
     document.body.appendChild(alertBox);
-
     btn.addEventListener('click', () => {
+      console.log(true);
       alertBox.remove();
       alertBtn.disabled = false;
+      confirmBtn.disabled = false;
+      document.body.style.background = '#ffffff';
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      console.log(false);
+      alertBox.remove();
+      alertBtn.disabled = false;
+      confirmBtn.disabled = false;
+      document.body.style.background = '#ffffff';
     });
   }
 
-  alertBtn.addEventListener('click', () => {
-    customAlert();
-
-    alertBtn.disabled = true;
+  confirmBtn.addEventListener('click', () => {
+    document.body.style.background = '#c4c4c4';
+    confirmBtn.disabled = true;
+    customConfirm();
   });
 
   e.preventDefault();
