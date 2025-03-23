@@ -1,13 +1,17 @@
 document.addEventListener('DOMContentLoaded', e => {
   let alertBtn = document.getElementById('alert__btn');
   let confirmBtn = document.getElementById('confirm__btn');
+  let propmtBtn = document.getElementById('prompt__btn');
   alertBtn.style.padding = '5px 15px';
   alertBtn.style.marginBottom = '10px';
 
   confirmBtn.style.padding = '5px 15px';
   confirmBtn.style.marginBottom = '10px';
 
-  const customConfirm = () => {
+  propmtBtn.style.padding = '5px 15px';
+  propmtBtn.style.marginBottom = '10px';
+
+  const customPrompt = () => {
     let alertBox = document.createElement('div');
     let title = document.createElement('h1');
     let text = document.createElement('p');
@@ -43,33 +47,35 @@ document.addEventListener('DOMContentLoaded', e => {
     cancelBtn.style.position = 'absolute';
     cancelBtn.style.right = '100px';
     cancelBtn.style.bottom = '15px';
+    let textInput = document.createElement('input');
+    textInput.style.width = '50%';
+    textInput.style.height = '20px';
     alertBox.appendChild(cancelBtn);
     alertBox.appendChild(title);
     alertBox.appendChild(text);
+    alertBox.appendChild(textInput);
     alertBox.appendChild(btn);
-
     document.body.appendChild(alertBox);
+
     btn.addEventListener('click', () => {
-      console.log(true);
+      alert(textInput.value);
       alertBox.remove();
-      alertBtn.disabled = false;
-      confirmBtn.disabled = false;
+      propmtBtn.disabled = false;
       document.body.style.background = '#ffffff';
     });
 
     cancelBtn.addEventListener('click', () => {
-      console.log(false);
+      alert(null);
       alertBox.remove();
-      alertBtn.disabled = false;
-      confirmBtn.disabled = false;
+      propmtBtn.disabled = false;
       document.body.style.background = '#ffffff';
     });
   }
 
-  confirmBtn.addEventListener('click', () => {
+  propmtBtn.addEventListener('click', () => {
     document.body.style.background = '#c4c4c4';
-    confirmBtn.disabled = true;
-    customConfirm();
+    propmtBtn.disabled = true;
+    customPrompt();
   });
 
   e.preventDefault();
