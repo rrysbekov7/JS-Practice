@@ -1,1 +1,35 @@
+#container {
+  outline: 1px solid black;
+}
 
+.tabs {
+  display: flex;
+  margin-bottom: 2px;
+}
+
+.item {
+  outline: 1px solid black;
+  padding: 0 10px;
+  margin-right: 5px;
+  color: violet;
+}
+
+.item.active {
+  color: black;
+}
+
+.content {
+  padding: 3px;
+}
+
+.content-item {
+  outline: 1px solid black;
+}
+
+.content-title {
+  margin: 0;
+}
+
+.content-text {
+  margin: 0;
+}
