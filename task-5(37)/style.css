@@ -1,0 +1,59 @@
+#container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  outline: 1px solid lightsteelblue;
+  text-align: center;
+}
+
+#textarea {
+  width: 400px;
+  height: 150px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 15px;
+
+}
+
+.save-btn {
+  display: flex;
+  align-self:center;
+  margin-bottom: 10px;
+  width: 140px;
+}
+.clear-btn {
+  display: flex;
+  align-self:center;
+  width: 140px;
+  margin-bottom: 10px;
+}
+
+.quit-btn {
+  display: flex;
+  align-self:center;
+  width: 140px;
+}
+
+form {
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  outline: 1px solid black;
+  width: 300px;
+  height: 100px;
+  text-align: center;
+  justify-content: center;
+}
+
+input {
+  display: flex;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.click-btn {
+  display: flex;
+  align-self: center;
+  padding: 5px 20px;
+}
