@@ -1,4 +1,18 @@
 #container {
-  outline: 1px solid red;
-  padding: 10px;
+  margin: 0 auto;
+}
+
+tr {
+  outline: 1px solid black;
+  padding: 5px 10px;
+}
+
+td {
+  outline: 1px solid black;
+  padding: 5px 10px;
+}
+
+th {
+  outline: 1px solid black;
+  padding: 5px 10px;
 }

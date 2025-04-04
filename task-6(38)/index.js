@@ -1,31 +1,32 @@
 document.addEventListener('DOMContentLoaded', e => {
   const container = document.getElementById('container');
-  const name = document.getElementById('name');
-  const region = document.getElementById('region');
-  const subregion = document.getElementById('subregion');
-  const capital = document.getElementById('capital');
-  const flag = document.getElementById('flag');
-  const countryText = document.getElementById('country-text');
-  const show = document.getElementById('show');
-  const img = document.createElement('img');
-  container.appendChild(img);
-  show.addEventListener('click', e => {
-    const xhr = new XMLHttpRequest();
-    xhr.addEventListener("load", function () {
-      console.log(JSON.parse(this.responseText));
-      name.innerText = JSON.parse(this.responseText)[0].name.common;
-      region.innerText = JSON.parse(this.responseText)[0].region;
-      subregion.innerText = JSON.parse(this.responseText)[0].subregion;
-      capital.innerText = JSON.parse(this.responseText)[0].capital;
-      flag.innerText = JSON.parse(this.responseText)[0].flag;
-      console.log(JSON.parse(this.responseText)[0].flags.png);
-      img.setAttribute('src', `${JSON.parse(this.responseText)[0].flags.png}`);
-      img.style.outline = '1px solid blue';
-      img.style.width = '150px';
-    });
-    xhr.open("GET", `https://restcountries.com/v3.1/name/${countryText.value}`);
-    xhr.send();
-    e.preventDefault();
-  })
+  const table = document.getElementsByTagName('table');
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener("load", function() {
+
+    const countryLength = JSON.parse(this.responseText).length;
+    for (let i = 0; i < countryLength; i++) {
+      const tr = document.createElement('tr');
+      const tdCode = document.createElement('td');
+      tdCode.innerText = JSON.parse(this.responseText)[i].altSpellings[0];
+      const tdFlag = document.createElement('td');
+      tdFlag.innerHTML = `<img src=${JSON.parse(this.responseText)[i].flags.png} style="width: 60px">`;
+      const tdName = document.createElement('td');
+      tdName.innerText = JSON.parse(this.responseText)[i].name.common;
+      const tdCapital = document.createElement('td');
+      tdCapital.innerText = JSON.parse(this.responseText)[i].capital;
+      const tdPopulation = document.createElement('td');
+      tdPopulation.innerText = JSON.parse(this.responseText)[i].population;
+      table[0].appendChild(tr);
+      tr.appendChild(tdCode);
+      tr.appendChild(tdFlag);
+      tr.appendChild(tdName);
+      tr.appendChild(tdCapital);
+      tr.appendChild(tdPopulation);
+    }
+  });
+  xhr.open("GET", 'https://restcountries.com/v3.1/all');
+  xhr.send();
   e.preventDefault();
 })
