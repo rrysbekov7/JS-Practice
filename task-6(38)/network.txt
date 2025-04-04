@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+</body>
+<script>
+  const xhr = new XMLHttpRequest();
+  // создаем обьект - с помощью которого мы делаем запрос
+  // new XMLHttpRequest() - готовый экземпляр данного класса
+
+  xhr.addEventListener("load", function () {
+    // console.log(this.responseText); - он отобразит в виде строки
+    // поэтому надо парсить
+    const response = JSON.parse(this.responseText);
+    console.log(JSON.parse(this.responseText));
+    // когда хотим взять только регион
+    console.log(JSON.parse(this.responseText)[0].region);
+    // сделали через переменную покрасивее
+    console.log(response[0].region);
+  })
+
+  xhr.open("GET", 'https://restcountries.com/v3.1/name/Kyrgyzstan'); // метод запроса и куда отзываемся(URL)
+  xhr.send(); // отправка запроса на сервер
+
+</script>
+
+</html>
+
+----------------------------------------------------
+const request = (config) => {
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener("load", function () {
+    if (this.status >= 200 && this.status < 300) {
+      const response = JSON.parse(this.responseText);
+      config.success(response);
+    } else {
+      config.error(this.status);
+    }
+  });
+
+  xhr.addEventListener('error', function () {
+    config.error('Internet connection is BAD!');
+  })
+
+  xhr.addEventListener('timeout', function () {
+    config.error('Request timeout!');
+  })
+
+  xhr.open(config.method, config.url);
+  xhr.send();
+};
+
+// 'https://restcountries.com/v3.1/name/Kyrgyzstan'
+
+---------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./request.js"></script>
+</head>
+</body>
+<script>
+  request({
+    method: 'GET',
+    url: 'https://restcountries.com/v3.1/name/Kyrgyzstan',
+    success: function (res) {
+      console.log(res);
+    },
+    err: function (err) {
+      console.log(err);
+    }
+  })
+
+</script>
+
+</html>
+
+--------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./request.js"></script>
+</head>
+
+<body>
+  <div>
+    <span><strong>Flag</strong></span>
+    <span id="imgFlag"></span>
+  </div>
+</body>
+<script>
+  const imgSpan = document.getElementById('imgFlag');
+  request({
+    method: 'GET',
+    url: 'https://restcountries.com/v3.1/name/Kyrgyzstan',
+    success: function (res) {
+      console.log(res);
+      const country = res[0];
+      imgSpan.innerHTML = `<img width="150px" alt=${country.flags.alt} src=${country.flags.png}>`;
+      console.log(country.flags);
+    },
+    err: function (err) {
+      console.log(err);
+    }
+  })
+
+</script>
+
+</html>
+
+------------------------------------------------------------
+// https://projects.lukehaas.me/css-loaders/  - ссылка на прелоадеры
+
+CSS FILE
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  display: none;
+}
+
+.loader {
+  color: #5b502a;
+  font-size: 11px;
+  text-indent: -99999em;
+  margin: 55px auto;
+  position: relative;
+  width: 10em;
+  height: 10em;
+  box-shadow: inset 0 0 0 1em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.loader:before,
+.loader:after {
+  position: absolute;
+  content: '';
+}
+
+.loader:before {
+  width: 5.2em;
+  height: 10.2em;
+  background: #ffffff;
+  border-radius: 10.2em 0 0 10.2em;
+  top: -0.1em;
+  left: -0.1em;
+  -webkit-transform-origin: 5.1em 5.1em;
+  transform-origin: 5.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease 1.5s;
+  animation: load2 2s infinite ease 1.5s;
+}
+
+.loader:after {
+  width: 5.2em;
+  height: 10.2em;
+  background: #ffffff;
+  border-radius: 0 10.2em 10.2em 0;
+  top: -0.1em;
+  left: 4.9em;
+  -webkit-transform-origin: 0.1em 5.1em;
+  transform-origin: 0.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease;
+  animation: load2 2s infinite ease;
+}
+
+@-webkit-keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+-------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./request.js"></script>
+</head>
+
+<body>
+  <div class="loader" id="loader">Loading...</div>
+  <button type="button" id="getDataBtn">Get Data!</button>
+  <div>
+    <span id="imgFlag"></span>
+  </div>
+</body>
+<script>
+  const loader = document.getElementById('loader');
+  const getDataBtn = document.getElementById('getDataBtn');
+
+  getDataBtn.addEventListener('click', () => {
+    loader.style.display = 'block';
+    request({
+      method: 'GET',
+      url: 'https://restcountries.com/v3.1/name/Kyrgyzstan',
+      success: function (res) {
+        console.log(res);
+        const country = res[0];
+        const imgSpan = document.createElement('span');
+        imgSpan.innerHTML = `<span><strong>Flag</strong></span>
+    <span id="imgFlag">
+      <img width="150px" alt=${country.flags.alt} src=${country.flags.png}>
+    </span>
+    `;
+        document.body.appendChild(imgSpan);
+        loader.style.display = 'none';
+        console.log(country.flags);
+      },
+      err: function (err) {
+        console.log(err);
+        loader.style.display = 'none';
+      }
+    })
+  });
+
+</script>
+
+</html>
+
+----------------------------------------------------------

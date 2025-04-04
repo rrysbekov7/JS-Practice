@@ -1,0 +1,427 @@
+СТЭК И КУЧА - ОТ ВЕРХНЕГО НА НИЖНИЙ
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+  const circleArea = (radius) => {
+    return Math.PI * radius ** 2;
+  }
+
+  const printCircle = (name, radius) => {
+    const area = circleArea(radius);
+    console.log(name + ' area = ' + area)
+  }
+
+  printCircle('Pizza', 30);
+
+</script>
+
+</html>
+
+---------------------------------------------------
+/ Здесь будет бесконечный цикл
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+  const chicken = () => {
+    return egg();
+  }
+
+  const egg = () => {
+    return chicken();
+  }
+
+  console.log(chicken() + ' came first');
+
+</script>
+
+</html>
+
+------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+  const data = [{
+      name: 'Одежда'
+    },
+    {
+      name: 'Обувь'
+    }
+  ]
+
+  const getCategoryTree = (items) => {
+    const ul = document.createElement('ul');
+
+    items.forEach(item => {
+      const li = document.createElement('li');
+      li.innerText = item.name;
+      ul.appendChild(li);
+      console.log(item.name);
+    });
+
+    return ul;
+  }
+
+  const tree = getCategoryTree(data);
+  document.body.appendChild(tree);
+
+</script>
+
+</html>
+
+----------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+  const data = [{
+      name: 'Одежда',
+      children: [{
+          name: 'Платья'
+        },
+        {
+          name: 'Брюки'
+        }
+      ]
+    },
+    {
+      name: 'Обувь',
+      children: [{
+        name: 'кроссовки'
+      }, ]
+    },
+    {
+      name: 'Верхняя одежда'
+    }
+  ]
+
+  const getCategoryTree = (items) => {
+    const ul = document.createElement('ul');
+
+    items.forEach(item => {
+      const li = document.createElement('li');
+      li.innerText = item.name;
+
+      if (item.children && item.children.length > 0) {
+        const innerUl = getCategoryTree(item.children);
+        li.appendChild(innerUl);
+      }
+
+      ul.appendChild(li);
+      //   console.log(item.name);
+    });
+
+    return ul;
+  }
+
+  const tree = getCategoryTree(data);
+  document.body.appendChild(tree);
+
+</script>
+
+</html>
+
+------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<br>
+<button id="show_message">Легкая задача</button>
+</br>
+<button id="do_heavy_task">Тяжелая задача</button>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const showMessageBtn = document.getElementById('show_message');
+    const heavyTaskBtn = document.getElementById('do_heavy_task');
+
+    showMessageBtn.addEventListener('click', () => {
+      console.log('Я легкая задача');
+    })
+
+    heavyTaskBtn.addEventListener('click', () => {
+      let count = 0;
+
+
+      while (count < 300000000) {
+        count++;
+      }
+
+      console.log('Конский цикл отработал, моя консоль - ' + count);
+    });
+  })
+
+</script>
+
+</html>
+
+-------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<button id="clickBtn">Click</button>
+</body>
+<script>
+  const clickBtn = document.getElementById('clickBtn');
+  setTimeout(() => {
+    console.log('Консоль после 5 секунд из setTimeout');
+  }, 5000);
+
+  clickBtn.addEventListener('click', () => {
+    console.log('Событие по нажатию');
+  })
+
+  console.log('Здесь и сейчас');
+
+</script>
+
+</html>
+
+------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+</body>
+<script>
+  / получаем данные от localStorage через ключ - theme
+  const theme = localStorage.getItem('theme');
+  console.log(theme); / если данных по ключу нет то выведет null
+
+</script>
+
+</html>
+
+-------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+</body>
+<script>
+  const theme = localStorage.getItem('theme');
+  console.log(theme);
+
+  if (theme === null) {
+    localStorage.setItem('theme', 'Я та самая тема');
+    / здесь создаем данные в localStorage
+    / theme - это ключ
+    / Я та самая тема - это значение
+  }
+
+  localStorage.setItem('user', 'Renat');
+
+</script>
+
+</html>
+
+Cеть -> application -> localStorage
+
+-------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+</body>
+<script>
+  const numbers = [1, 2, 3, 4];
+  localStorage.setItem('ArrayOfNumbers', JSON.stringify(numbers)); 
+  / JSON.stringify когда отправляем на localStorage
+
+  let numbersFromLocalStorage = localStorage.getItem('ArrayOfNumbers');
+  console.log(JSON.parse(numbersFromLocalStorage));
+
+  / JSON.parse когда получаем данные с localStorage массивами 
+  / так как в localStorage данные - это строки
+
+  localStorage.clear(); / когда нужно очистить все в localStorage
+  localStorage.removeItem('user'); / когда нужно очистить опреденный элемент по ключу в localStorage
+</script>
+
+</html>
+
+
+JSON.stringify и JSON.parse - при работе с массивами или обьектами
+
+------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+</body>
+<label>Select a Color: <input type="text" name="color"></label>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.querySelector('input[name=color]');
+
+    input.addEventListener('change', e => {
+      console.log(e.target.value);
+    })
+  });
+
+</script>
+
+</html>
+
+----------------------------------------------------
+вносим данные в localStorage но после ребута страницы все пропадает
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+</body>
+<label>Select a Color: <input type="text" name="color"></label>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.querySelector('input[name=color]');
+
+    input.addEventListener('change', e => {
+      console.log(e.target.value);
+      document.body.style.backgroundColor = e.target.value;
+      localStorage.setItem('bgColor', e.target.value);
+    })
+  });
+
+</script>
+
+</html>
+
+--------------------------------------------------------
+после ребута все сохраняется
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+</body>
+<label>Select a Color: <input type="text" name="color"></label>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.querySelector('input[name=color]');
+
+    input.addEventListener('change', e => {
+      console.log(e.target.value);
+      document.body.style.backgroundColor = e.target.value;
+      localStorage.setItem('bgColor', e.target.value);
+    })
+
+    const bgColor = localStorage.getItem('bgColor');
+    if (bgColor !== null) {
+      document.body.style.backgroundColor = bgColor
+    }
+  });
+
+</script>
+
+</html>
+
+-----------------------------------------------------
+Сделали выбор цвета через функцию
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+</body>
+<label>Select a Color: <input type="text" name="color"></label>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.querySelector('input[name=color]');
+
+    const getColorBody = (color) => {
+      document.body.style.backgroundColor = color;
+    }
+
+    input.addEventListener('change', e => {
+      console.log(e.target.value);
+      getColorBody(e.target.value);
+      localStorage.setItem('bgColor', e.target.value);
+    })
+
+    const bgColor = localStorage.getItem('bgColor');
+    if (bgColor !== null) {
+      getColorBody(bgColor);
+    }
+  });
+
+</script>
+
+</html>
+
+-------------------------------------------------------------
