@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./index.js"></script>
+</head>
+<body>
+  <div id="container">
+    <form action="">
+      <div class="sub-container">
+        <label class="country">Country
+          <select name="" id="select">
+
+          </select>
+        </label>
+        <label class="date">Date
+          <input type="date" id="date">
+        </label>
+      </div>
+      <textarea placeholder="Message"></textarea>
+      <button type="button" id="clickBtn"></button>
+    </form>
+
+  </div>
+</body>
+</html>
+
+
+---------------------------
+#container {
+  padding: 10px 0px;
+}
+
+form {
+  display: flex;
+  outline: 1px solid blue;
+}
+
+
+.sub-container {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.submit-btn {
+  width: 20px;
+  height: 20px;
+}
+
+select {
+  width: 180px;
+}
+
+.country {
+  display: block;
+}
+
+.date {
+  display: block;
+}
+
+textarea {
+  width: 300px;
+  margin-right: 10px;
+}
+
+#clickBtn {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  background-image: url("./img/direction-top-right-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+}
+
+------------------------
+document.addEventListener("DOMContentLoaded", ev => {
+  const container = document.getElementById("container");
+  const select = document.getElementById("select");
+  const option = document.createElement("option");
+  const clickBtn = document.getElementById("clickBtn");
+  const textArea = document.querySelector("textarea");
+  const date = document.getElementById("date");
+  let count = 0;
+  option.innerText = 'Выберите страну';
+  option.disabled = true;
+  select.appendChild(option);
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", function () {
+    const numbers = JSON.parse(this.responseText).length;
+
+    for (let i = 0; i < numbers; i++) {
+      const option = document.createElement("option");
+      option.innerText = `${JSON.parse(this.responseText)[i].name.common}`;
+      select.appendChild(option);
+    }
+    select.addEventListener('click', e => {
+      console.log(select.value);
+    })
+    console.log(JSON.parse(this.responseText)[0]);
+
+    clickBtn.addEventListener("click", e => {{
+      container.style.display = "flex";
+      container.style.flexDirection = "column-reverse";
+      const newContainer = document.createElement("div");
+      container.append(newContainer);
+      newContainer.classList.add("container");
+      newContainer.style.outline = "1px solid red";
+      newContainer.style.position = "relative";
+      newContainer.style.marginBottom = "10px";
+      container.appendChild(newContainer);
+      const removeBtn = document.createElement("button");
+      removeBtn.classList.add("remove");
+      removeBtn.innerText = "Remove";
+      removeBtn.style.position = "absolute";
+      removeBtn.style.top = "0";
+      removeBtn.style.right = "0";
+      removeBtn.style.border = "none";
+      removeBtn.style.backgroundColor = "transparent";
+      removeBtn.style.fontWeight = "bold";
+      for (let i = 0; i < numbers; i++) {
+        if (select.value === JSON.parse(this.responseText)[i].name.common) {
+          console.log(i + 1);
+          count++;
+          console.log('sdsd', JSON.parse(this.responseText)[i].flags.png);
+          const text = document.createElement("p");
+          // text.innerText = JSON.parse(this.responseText)[i].name.common;
+          text.innerHTML = `Post #${count} at ${date.value} being in: ${select.value}
+          <img src=${JSON.parse(this.responseText)[i].flags.png} style="width: 15px; height: 10px">`;
+          text.style.margin = '0';
+          newContainer.append(text);
+          newContainer.append(textArea.value);
+          newContainer.append(removeBtn);
+        }
+      }
+      removeBtn.addEventListener("click", e => {
+
+        if (confirm("Are you sure you want to delete?")) {
+          newContainer.remove(newContainer);
+        }
+
+        e.preventDefault();
+      });
+
+
+      // console.log(textArea.value);
+      // console.log(select.value);
+      // console.log(count);
+      // console.log(date.value);
+      e.preventDefault();
+    }})
+
+  });
+
+  xhr.open("GET", `https://restcountries.com/v3.1/all`);
+  xhr.send();
+  container.style.outline = "1px solid red";
+  ev.preventDefault()
+});
+
+// This is an awesome country!!!I really liked being here! Some text and stuff
