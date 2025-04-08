@@ -1,0 +1,46 @@
+#container {
+  padding: 10px 0px;
+}
+
+form {
+  display: flex;
+  outline: 1px solid blue;
+}
+
+
+.sub-container {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.submit-btn {
+  width: 20px;
+  height: 20px;
+}
+
+select {
+  width: 180px;
+}
+
+.country {
+  display: block;
+}
+
+.date {
+  display: block;
+}
+
+textarea {
+  width: 300px;
+  margin-right: 10px;
+}
+
+#clickBtn {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  background-image: url("./img/direction-top-right-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+}
