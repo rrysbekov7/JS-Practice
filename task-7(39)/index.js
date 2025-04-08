@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", ev => {
         newContainer.append(text);
         newContainer.append(getCountryList[j].text);
         newContainer.append(removeBtn);
-        console.log(getCountryList);
         removeBtn.addEventListener("click", e => {
           if (confirm("Are you sure you want to delete?")) {
             for (let i = 0; i < countryList.length; i++) {
