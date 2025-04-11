@@ -36,9 +36,13 @@ document.addEventListener("DOMContentLoaded", e => {
         container.appendChild(myCountry);
         if (data[0].borders === undefined) {
           console.log('У страны нет границ - это остров!');
-          myCountry.innerHTML =  `<p>Страна: <b>${data[0].name.common}</b></p><p>У нее нет границ: </p>`;
+          myCountry.innerHTML =  `<p>Страна: <b>${data[0].name.common}</b></p>
+          <span><img src=${data[0].flags.png} style="width: 50px; outline: 1px solid blue"></span>
+          <p>У нее нет границ: </p>`;
         } else {
-          myCountry.innerHTML =  `<p>Страна: <b>${data[0].name.common}</b></p><p>Граничит с: </p>`;
+          myCountry.innerHTML =  `<p>Страна: <b>${data[0].name.common}</b></p>
+          <span><img src=${data[0].flags.png} style="width: 50px; outline: 1px solid blue"></span>
+          <p>Граничит с: </p>`;
         }
 
 
