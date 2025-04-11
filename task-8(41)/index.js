@@ -55,7 +55,8 @@ document.addEventListener("DOMContentLoaded", e => {
           const url = `https://restcountries.com/v3.1/alpha/${data[index]}`;
           showData({url: url}).then(data => {
             const foreignCountry = document.createElement("p");
-            foreignCountry.innerText = data[0].name.common;
+            foreignCountry.innerHTML = `${data[0].name.common}
+            <img src = ${data[0].flags.png} style="width: 45px; height: 30px; outline: 1px solid green"> `;
             foreignCountry.style.fontWeight = "bold";
             container.appendChild(foreignCountry);
             console.log(data[0].name.common);
