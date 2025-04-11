@@ -43,20 +43,17 @@ document.addEventListener("DOMContentLoaded", e => {
           <span><img src=${data[0].flags.png} style="width: 45px; height: 30px; outline: 1px solid blue"></span>
           <p>Граничит с:</p>`;
           container.appendChild(foreignCountry);
-          console.log('first then',data[0].borders);
           return data[0].borders;
         }
       })
       .then(data => {
         return Promise.all(data.map(item => {
           const url = `https://restcountries.com/v3.1/alpha/${item}`;
-          console.log('second then',url);
           return showData({url: url});
         }));
       })
       .then(data => {
         return Promise.all(data.map(item => {
-          console.log('third then',item[0]);
           const foreignCountry = document.createElement("p");
           foreignCountry.style.outline = "1px solid green";
           foreignCountry.style.padding = "10px";
