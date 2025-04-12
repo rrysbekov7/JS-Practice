@@ -3,21 +3,27 @@ document.addEventListener("DOMContentLoaded", e => {
   const form = document.querySelector("form");
   const input = document.querySelector("input");
   const findBtn = document.querySelector("find-btn");
-
+  const loader = document.querySelector(".loader");
+  loader.style.display = "none";
   const showData = (config) => {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.addEventListener("load", function () {
+        loader.style.display = "block";
         if (this.status >= 200 && this.status < 300) {
+          loader.style.display = "none";
           resolve(JSON.parse(this.responseText));
         } else {
+          loader.style.display = "none";
           reject(this.status);
         }
       })
       xhr.addEventListener("error", function () {
+
         reject('Internet connection is bad');
       });
       xhr.addEventListener('timeout', function () {
+        // loader.style.display = "none";
         reject('Request timeout!');
       });
       xhr.open("GET", config.url);
@@ -28,6 +34,7 @@ document.addEventListener("DOMContentLoaded", e => {
 
   form.addEventListener("submit", e => {
     const url = `https://restcountries.com/v3.1/name/${input.value}`;
+    loader.style.display = "block";
     showData({url: url})
       .then(data => {
         const foreignCountry = document.createElement("p");
