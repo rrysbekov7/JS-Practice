@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', event => {
 </html>
 
 =============================================================================
-Как получить доступ к form 
+Как получить доступ к form
 
 let form = document.querySelector("form");
 
