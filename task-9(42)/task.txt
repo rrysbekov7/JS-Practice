@@ -80,12 +80,6 @@ document.addEventListener("DOMContentLoaded", e => {
   e.preventDefault();
 })
 
-
-
-// https://pokeapi.co/api/v2/pokemon/
-
-// https://pokeapi.co/api/v2/pokemon/{id}/
-
 ------------------------------
 #container {
   outline: 1px solid red;

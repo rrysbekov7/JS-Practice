@@ -1,12 +1,9 @@
 document.addEventListener("DOMContentLoaded", e => {
   const container = document.getElementById("container");
-
-
   const pokemonList = async () => {
       const list = await fetch(`https://pokeapi.co/api/v2/pokemon`);
        return await list.json();
   }
-
   const pokemonList2 = async () => {
     const newList = await pokemonList();
     const heroesList = newList.results.map(async (item) => {
@@ -62,7 +59,3 @@ document.addEventListener("DOMContentLoaded", e => {
 })
 
 
-
-// https://pokeapi.co/api/v2/pokemon/
-
-// https://pokeapi.co/api/v2/pokemon/{id}/
