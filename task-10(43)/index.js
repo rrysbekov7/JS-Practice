@@ -1,20 +1,32 @@
 document.addEventListener("DOMContentLoaded", e => {
   class Machine {
-    turnOn() {}
-    turnOff() {}
+    turnOn() {
+      console.log("Turning on");
+    }
+    turnOff() {
+      console.log("Turning off");
+    }
   }
 
   class HomeAppliance extends Machine {
-    plugIn() {} // включить сеть
-    plugOff() {} // выключить сеть
+    plugIn() {
+      console.log("Plug In");
+    } // включить сеть
+    plugOff() {
+      console.log("Plug Off");
+    } // выключить сеть
   }
 
   class WashingMachine extends HomeAppliance {
-    run(){} // запускать
+    run(){
+      console.log("Running Machine");
+    } // запускать
   }
 
   class LightSource extends HomeAppliance {
-    setLevel(level) {} // уровень освещенности
+    setLevel(level) {
+      console.log(level);
+    } // уровень освещенности
   }
 
   class AutoVehicle extends Machine {
@@ -26,6 +38,7 @@ document.addEventListener("DOMContentLoaded", e => {
     setPosition(x, y) {
       this.x = x;
       this.y = y;
+      console.log("setPosition", x, y);
     }
   }
 
@@ -36,10 +49,12 @@ document.addEventListener("DOMContentLoaded", e => {
     }
 
     setSpeed(speed) {
-
+      console.log(speed);
     }
 
-    run(x, y){}
+    run(x, y){
+      console.log(x, y);
+    }
   }
 
 
@@ -53,10 +68,21 @@ document.addEventListener("DOMContentLoaded", e => {
   console.log(homeappliance);
 
   const washingMachine = new WashingMachine();
+  washingMachine.plugIn();
+  washingMachine.plugOff();
+  washingMachine.run();
   console.log(washingMachine);
 
   const lightSource = new LightSource();
   console.log(lightSource);
+  lightSource.plugIn();
+  lightSource.setLevel(60);
+  lightSource.turnOn();
 
+  const honda = new Car();
+  honda.setPosition(40, 50);
+  honda.turnOn();
+  honda.setSpeed(50);
+  honda.run(140,250);
   e.preventDefault();
 })
