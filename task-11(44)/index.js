@@ -1,42 +1,35 @@
 document.addEventListener("DOMContentLoaded", e => {
-  class Hamburger {
-    constructor(exsemplar, nachinka) {
-      this.exsemplar = exsemplar;
-      this.nachinka = nachinka;
-
-      if(this.exsemplar === 'small') {
-        this.price = 60;
-        this.calory = 200;
-      } else if(this.exsemplar === 'big') {
-        this.price = 80;
-        this.calory = 300;
+  const PiggyBank = {
+    coins: {1: 0, 3: 0, 5: 0, 10: 0},
+    addCoin: function(value) {
+      switch (value) {
+        case 1: case 3: case 5: case 10:
+          this.coins[value]++;
+          break;
+        default:
+          console.log('This is not a correct value!');
       }
+    },
 
-      if (this.nachinka === 'cheese') {
-        this.price2 = 15;
-        this.calory2 = 50;
-      } else if(this.nachinka === 'salad') {
-        this.price2 = 5;
-        this.calory2 = 5;
-      }else if(this.nachinka === 'potato fri') {
-        this.price2 = 10;
-        this.calory2 = 25;
-      } else {
-        console.log('another meal');
+    showCoins: function() {
+      for (const key in this.coins) {
+        console.log('key, this.coins[key]',key, this.coins[key]);
       }
-    }
+    },
 
-    getPrice() {
-      console.log(this.price + this.price2);
+    getTotal: function() {
+      let total = 0;
+      for (const key in this.coins) {
+        total += key * this.coins[key];
+      }
+      return total;
     }
+  };
 
-    getCalory() {
-      console.log(this.calory + this.calory2);
-    }
-  }
-
-  const cheeseburger = new Hamburger('small','cheese');
-  cheeseburger.getPrice();
-  cheeseburger.getCalory();
+  PiggyBank.addCoin(10);
+  PiggyBank.addCoin(5);
+  PiggyBank.addCoin(3);
+  PiggyBank.showCoins();
+  console.log('getTotal',PiggyBank.getTotal());
   e.preventDefault();
 });
