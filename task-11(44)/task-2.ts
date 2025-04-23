@@ -1,32 +1,36 @@
-const PiggyBank = {
-  coins: {1:0, 3:0, 5:0, 10:0},
+class PiggyBank {
+  private coins: {[key: number]: number}
+  constructor() {
+    this.coins =  {1: 0, 3: 0, 5: 0, 10: 0}
+  }
 
-  addCoins: function (value:number) {
-    switch(value) {
-      case 1:
-        this.coins[value]++;
-        break;
-      case 3:
-        this.coins[value]++;
-        break;
-      case 5:
-        this.coins[value]++;
-        break;
-      case 10:
+  addCoin (value: number) {
+    switch (value) {
+      case 1: case 3: case 5: case 10:
         this.coins[value]++;
         break;
       default:
         console.log('This is not a correct value!');
     }
-  },
+  }
 
-  showCoins: function () {
-    for (let key = 0; key < this.coins; key++) {
-
+  showCoins () {
+    for (const key in this.coins) {
+      console.log('key, this.coins[key]',key, this.coins[key]);
     }
   }
-}
 
-PiggyBank.addCoins(10);
-PiggyBank.addCoins(5);
-PiggyBank.addCoins(3);
+  getTotal () {
+    let total = 0;
+    for (const key in this.coins) {
+      total += Number(key) * this.coins[key];
+    }
+    return total;
+  }
+};
+const price = new PiggyBank();
+price.addCoin(10);
+price.addCoin(5);
+price.addCoin(3);
+price.showCoins();
+console.log('getTotal',price.getTotal());
