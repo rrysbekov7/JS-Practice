@@ -9,7 +9,7 @@ TASK-1
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script src="./index.js"></script>
+  <script src="./Hello.js"></script>
 </head>
 
 <body>
@@ -45,7 +45,7 @@ TASK-2
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script src="./index.js"></script>
+  <script src="./Hello.js"></script>
 </head>
 
 <body>
@@ -110,7 +110,7 @@ TASK-3
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script src="./index.js"></script>
+  <script src="./Hello.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', event => {
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script src="./index.js"></script>
+  <script src="./Hello.js"></script>
 </head>
 
 <body>
